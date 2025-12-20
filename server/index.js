@@ -3,16 +3,19 @@ import mongoose  from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-
+import route from "./routes/userRoute.js";
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();
 
+app.use("/api", route);
 
 const PORT=process.env.PORT || 7000;
 const URL = process.env.MONGOURL;
+
+
 
 // Check if URL exists to avoid Mongoose errors
 if (!URL) {
