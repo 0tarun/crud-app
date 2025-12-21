@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
 import route from "./routes/userRoute.js";
+import { findAll_user, findBy_id , findByEmail} from "./controller/userController.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,6 +12,9 @@ app.use(cors());
 dotenv.config();
 
 app.use("/api", route);
+app.use("/api", findAll_user);
+app.use("/api", findByEmail);
+app.use("/api", findBy_id);
 
 const PORT=process.env.PORT || 7000;
 const URL = process.env.MONGOURL;

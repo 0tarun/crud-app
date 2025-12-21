@@ -20,3 +20,43 @@ export const create = async(req,res) =>{
     }
 
 }
+
+export const findAll_user = async(req,res)=>{
+    try{
+        const userData = await Users.find();
+        if(!userData){
+            return res.status(404).json({msq: "User not find !"});
+        }
+        res.status(200).json(userData);
+
+    }catch(error){
+        res.status(500).json({error: error});
+    }
+}
+
+export const findByEmail = async(req,res)=>{
+    try{
+        const email = req.body.email;
+        const userEmail = await Users.findOne({email: email});
+        if(!userEmail){
+            return res.status(404).json({msg: "User not found!"});
+        }       
+        res.status(200).json(userEmail);
+    }
+    catch(error){
+        res.status(500).json({error: error});
+    }
+}
+
+export const findBy_id = async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const userId = await Users.findById(id);
+        if(!userId){
+            return res.status(404).json({msg: "User not found!"});
+        }
+        res.status(200).json(userId);
+    }catch(error){
+        res.status(500).json({error: error});
+    }
+}
