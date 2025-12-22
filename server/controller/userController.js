@@ -74,3 +74,18 @@ export const Delete = async(req,res)=>{
         res.status(500).json({error: error});
     }
 }
+
+export const Update = async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const updateUser = await Users.findByIdAndUpdate(id, req.body, {new: true});
+        if(!updateUser){
+            return res.status(404).json({msg : "User not found!"});
+        }
+        res.status(200).json(updateUser);
+
+    }catch(error)
+    {
+    res.status(500).json({error : error});
+    }
+}
