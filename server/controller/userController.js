@@ -36,7 +36,7 @@ export const findAll_user = async(req,res)=>{
 
 export const findByEmail = async(req,res)=>{
     try{
-        const email = req.body.email;
+        const email = req.params.email;
         const userEmail = await Users.findOne({email: email});
         if(!userEmail){
             return res.status(404).json({msg: "User not found!"});
@@ -56,6 +56,20 @@ export const findBy_id = async(req,res)=>{
             return res.status(404).json({msg: "User not found!"});
         }
         res.status(200).json(userId);
+    }catch(error){
+        res.status(500).json({error: error});
+    }
+}
+
+export const Delete = async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const deleteUser = await Users.findByIdAndDelete(id);
+        if(!deleteUser){
+            return res.status(404).json({msg: "user not found!"});
+        }
+        res.status(200).json(deleteUser);
+
     }catch(error){
         res.status(500).json({error: error});
     }
