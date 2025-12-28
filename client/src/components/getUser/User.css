@@ -1,0 +1,33 @@
+
+
+.userTable {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(224, 15, 15, 0.1);
+    background-color: #008000;
+    border-radius: 8px;
+}
+.addUser {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-size: 16px;
+    text-decoration: none;
+
+}
+.table{
+    margin: 0 auto;
+    width: 100%;
+}
+.userTable th {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    color: black;
+    text-align: center;
+}
